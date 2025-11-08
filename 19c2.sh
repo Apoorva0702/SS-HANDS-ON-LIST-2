@@ -1,0 +1,74 @@
+strace -o mkfifo_trace.txt mkfifo myfifo2 
+
+/*
+
+execve("/usr/bin/mkfifo", ["mkfifo", "myfifo2"], 0x7fffadf1e2f8 /* 47 vars */) = 0
+brk(NULL)                               = 0x572961cf8000
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7abf8c72e000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=59099, ...}) = 0
+mmap(NULL, 59099, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7abf8c71f000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libselinux.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=174472, ...}) = 0
+mmap(NULL, 181960, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7abf8c6f2000
+mmap(0x7abf8c6f8000, 118784, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x6000) = 0x7abf8c6f8000
+mmap(0x7abf8c715000, 24576, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x23000) = 0x7abf8c715000
+mmap(0x7abf8c71b000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x29000) = 0x7abf8c71b000
+mmap(0x7abf8c71d000, 5832, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7abf8c71d000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\220\243\2\0\0\0\0\0"..., 832) = 832
+pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+fstat(3, {st_mode=S_IFREG|0755, st_size=2125328, ...}) = 0
+pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+mmap(NULL, 2170256, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7abf8c400000
+mmap(0x7abf8c428000, 1605632, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x28000) = 0x7abf8c428000
+mmap(0x7abf8c5b0000, 323584, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1b0000) = 0x7abf8c5b0000
+mmap(0x7abf8c5ff000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1fe000) = 0x7abf8c5ff000
+mmap(0x7abf8c605000, 52624, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7abf8c605000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libpcre2-8.so.0", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=625344, ...}) = 0
+mmap(NULL, 627472, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7abf8c658000
+mmap(0x7abf8c65a000, 450560, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7abf8c65a000
+mmap(0x7abf8c6c8000, 163840, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x70000) = 0x7abf8c6c8000
+mmap(0x7abf8c6f0000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x97000) = 0x7abf8c6f0000
+close(3)                                = 0
+mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7abf8c655000
+arch_prctl(ARCH_SET_FS, 0x7abf8c655800) = 0
+set_tid_address(0x7abf8c655ad0)         = 5978
+set_robust_list(0x7abf8c655ae0, 24)     = 0
+rseq(0x7abf8c656120, 0x20, 0, 0x53053053) = 0
+mprotect(0x7abf8c5ff000, 16384, PROT_READ) = 0
+mprotect(0x7abf8c6f0000, 4096, PROT_READ) = 0
+mprotect(0x7abf8c71b000, 4096, PROT_READ) = 0
+mprotect(0x57293723d000, 4096, PROT_READ) = 0
+mprotect(0x7abf8c76c000, 8192, PROT_READ) = 0
+prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+munmap(0x7abf8c71f000, 59099)           = 0
+statfs("/sys/fs/selinux", 0x7ffdb548b930) = -1 ENOENT (No such file or directory)
+statfs("/selinux", 0x7ffdb548b930)      = -1 ENOENT (No such file or directory)
+getrandom("\xfc\xbe\x15\xf6\xf1\x21\xc5\xb7", 8, GRND_NONBLOCK) = 8
+brk(NULL)                               = 0x572961cf8000
+brk(0x572961d19000)                     = 0x572961d19000
+openat(AT_FDCWD, "/proc/filesystems", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+read(3, "nodev\tsysfs\nnodev\ttmpfs\nnodev\tbd"..., 1024) = 406
+read(3, "", 1024)                       = 0
+close(3)                                = 0
+access("/etc/selinux/config", F_OK)     = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=14596880, ...}) = 0
+mmap(NULL, 14596880, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7abf8b600000
+close(3)                                = 0
+mknodat(AT_FDCWD, "myfifo2", S_IFIFO|0666) = 0
+close(1)                                = 0
+close(2)                                = 0
+exit_group(0)                           = ?
++++ exited with 0 +++
+
+*/
